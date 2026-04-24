@@ -12,7 +12,8 @@ jobs:
       - name: Setup Flutter
         uses: subosito/flutter-action@v2
         with:
-          flutter-version: '3.22.4'  # Use this stable version
+          channel: 'stable'
+          # Don't specify version - use latest stable
           
       - name: Go to Flutter project
         working-directory: ./untitled8
