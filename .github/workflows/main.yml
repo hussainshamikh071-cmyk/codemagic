@@ -12,21 +12,21 @@ jobs:
       - name: Setup Flutter
         uses: subosito/flutter-action@v2
         with:
-          channel: 'stable'
+          flutter-version: '3.22.4'  # Use this stable version
           
       - name: Go to Flutter project
-        run: cd untitled8
+        working-directory: ./untitled8
+        run: echo "Now in Flutter project"
           
       - name: Get dependencies
+        working-directory: ./untitled8
         run: |
-          cd untitled8
           flutter clean
           flutter pub get
           
       - name: Build APK
-        run: |
-          cd untitled8
-          flutter build apk --release
+        working-directory: ./untitled8
+        run: flutter build apk --release
         
       - name: Upload APK
         uses: actions/upload-artifact@v4
