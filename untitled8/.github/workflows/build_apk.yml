@@ -1,0 +1,49 @@
+name: Build Safety Guardian APK
+
+on:
+  workflow_dispatch:  # Manual trigger from GitHub Actions tab
+  push:
+    branches: [ main ]  # Auto-build when you push to main branch
+
+jobs:
+  build-apk:
+    runs-on: ubuntu-latest
+    
+    steps:
+      # 1. Checkout your code
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      # 2. Setup Java (required for Android build)
+      - name: Setup Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+      
+      # 3. Setup Flutter
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.22.4'  # Stable version
+          channel: 'stable'
+      
+      # 4. Install dependencies
+      - name: Install dependencies
+        run: flutter pub get
+      
+      # 5. Clean build
+      - name: Clean build
+        run: flutter clean
+      
+      # 6. Build APK
+      - name: Build APK
+        run: flutter build apk --release
+      
+      # 7. Upload APK as artifact
+      - name: Upload APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: Safety-Guardian-APK
+          path: build/app/outputs/flutter-apk/app-release.apk
+          retention-days: 30  # Keep for 30 days

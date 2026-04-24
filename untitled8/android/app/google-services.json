@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "322481550402",
+    "project_id": "safety-guardian-82aa8",
+    "storage_bucket": "safety-guardian-82aa8.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:322481550402:android:37f60520d4219a527329db",
+        "android_client_info": {
+          "package_name": "com.safety.guardian"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBRPFrGK5rqfrxWDBx5ybjtcnjuqjuy5KQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
