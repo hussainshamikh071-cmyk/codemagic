@@ -12,19 +12,24 @@ jobs:
       - name: Setup Flutter
         uses: subosito/flutter-action@v2
         with:
-          channel: 'stable'  # Uses latest stable
-          # flutter-version: '3.22.4'  # Remove this line
+          channel: 'stable'
+          
+      - name: Go to Flutter project
+        run: cd untitled8
           
       - name: Get dependencies
         run: |
+          cd untitled8
           flutter clean
           flutter pub get
           
       - name: Build APK
-        run: flutter build apk --release
+        run: |
+          cd untitled8
+          flutter build apk --release
         
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
           name: safety-guardian-apk
-          path: build/app/outputs/flutter-apk/app-release.apk
+          path: untitled8/build/app/outputs/flutter-apk/app-release.apk
